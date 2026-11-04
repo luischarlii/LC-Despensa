@@ -86,6 +86,62 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
 <h1>La Despensa</h1>
 </div>
   </div>
+
+<p class="sub">Anota lo que compras, ve cuánto gastas y no olvides lo que falta.</p>
+
+<div class="sum" aria-live="polite">
+  <div class="big"><small>Gasto total</small><b id="total">$0.00</b></div>
+  <div><small>Artículos</small><b id="count">0</b></div>
+  <div><small>Faltan</small><b id="miss">0</b></div>
+</div>
+
+<div class="tabs" role="tablist">
+  <button role="tab" id="t1" aria-selected="true" aria-controls="p1">Mis compras</button>
+  <button role="tab" id="t2" aria-selected="false" aria-controls="p2">Me falta<span class="badge" id="badge" hidden>0</span></button>
+
+<section id="p1" role="tabpanel" aria-labelledby="t1">
+  <div class="panel">
+    <div class="row">
+      <div class="full"><label for="n1">Artículo</label><input id="n1" list="sug" placeholder="Ej. Leche, jabón, arroz" autocomplete="off"></div>
+      <div><label for="pr1">Precio unitario ($)</label><input id="pr1" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+      <div><label for="q1">Cantidad</label><input id="q1" type="number" inputmode="numeric" min="1" step="1" value="1"></div>
+      <div class="full"><label for="c1">Categoría</label>
+        <select id="c1"><option>Alimentos</option><option>Bebidas</option><option>Limpieza</option><option>Higiene</option><option>Mascotas</option><option>Otros</option></select></div>
+      <div class="full"><button class="btn" id="add1" style="width:100%">Agregar compra</button></div>
+    </div>
+    <p class="hint" id="err1" role="alert" style="color:var(--red)" hidden></p>
+    <datalist id="sug"></datalist>
+  </div>
+  <div class="panel" id="chart" hidden>
+    <h2>¿En qué gastas?</h2>
+    <div class="bar" id="bar"></div>
+    <div class="leg" id="leg"></div>
+  </div>
+  <div class="panel">
+    <h2>Compras registradas</h2>
+    <ul id="list1"></ul>
+    <p class="hint">Toca «Se acabó» para pasar un artículo a tu lista de faltantes.</p>
+  </div>
+  <a class="btn wa" id="wa1" target="_blank" rel="noopener" hidden>Enviar compras por WhatsApp</a>
+  <button class="btn ghost" id="clear" hidden>Borrar todas las compras</button>
+</section>
+
+<section id="p2" role="tabpanel" aria-labelledby="t2" hidden>
+  <div class="panel">
+    <div class="row">
+      <div class="full"><label for="n2">¿Qué te falta?</label><input id="n2" list="sug" placeholder="Ej. Huevo, papel higiénico" autocomplete="off"></div>
+      <div class="full"><label for="e2">Precio estimado (opcional)</label><input id="e2" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
+      <div class="full"><button class="btn" id="add2" style="width:100%">Agregar a la lista</button></div>
+    </div>
+  </div>
+  <div class="panel">
+    <h2>Lista para el súper</h2>
+    <ul id="list2"></ul>
+    <p class="hint" id="est" hidden></p>
+    <a class="btn wa" id="wa2" target="_blank" rel="noopener" style="margin-top:12px" hidden>Enviar lista por WhatsApp</a>
+  </div>
+</section>
+</main>
 <!-- Botón Apoyo con Mercado Pago en la cabecera -->
 <div class="lc-support">
   <button id="lcDonateBtn" class="lc-support-trigger"
@@ -277,62 +333,6 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
 </script>
 <!-- Botón Apoyo mercado Final -->
 
-
-<p class="sub">Anota lo que compras, ve cuánto gastas y no olvides lo que falta.</p>
-
-<div class="sum" aria-live="polite">
-  <div class="big"><small>Gasto total</small><b id="total">$0.00</b></div>
-  <div><small>Artículos</small><b id="count">0</b></div>
-  <div><small>Faltan</small><b id="miss">0</b></div>
-</div>
-
-<div class="tabs" role="tablist">
-  <button role="tab" id="t1" aria-selected="true" aria-controls="p1">Mis compras</button>
-  <button role="tab" id="t2" aria-selected="false" aria-controls="p2">Me falta<span class="badge" id="badge" hidden>0</span></button>
-
-<section id="p1" role="tabpanel" aria-labelledby="t1">
-  <div class="panel">
-    <div class="row">
-      <div class="full"><label for="n1">Artículo</label><input id="n1" list="sug" placeholder="Ej. Leche, jabón, arroz" autocomplete="off"></div>
-      <div><label for="pr1">Precio unitario ($)</label><input id="pr1" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
-      <div><label for="q1">Cantidad</label><input id="q1" type="number" inputmode="numeric" min="1" step="1" value="1"></div>
-      <div class="full"><label for="c1">Categoría</label>
-        <select id="c1"><option>Alimentos</option><option>Bebidas</option><option>Limpieza</option><option>Higiene</option><option>Mascotas</option><option>Otros</option></select></div>
-      <div class="full"><button class="btn" id="add1" style="width:100%">Agregar compra</button></div>
-    </div>
-    <p class="hint" id="err1" role="alert" style="color:var(--red)" hidden></p>
-    <datalist id="sug"></datalist>
-  </div>
-  <div class="panel" id="chart" hidden>
-    <h2>¿En qué gastas?</h2>
-    <div class="bar" id="bar"></div>
-    <div class="leg" id="leg"></div>
-  </div>
-  <div class="panel">
-    <h2>Compras registradas</h2>
-    <ul id="list1"></ul>
-    <p class="hint">Toca «Se acabó» para pasar un artículo a tu lista de faltantes.</p>
-  </div>
-  <a class="btn wa" id="wa1" target="_blank" rel="noopener" hidden>Enviar compras por WhatsApp</a>
-  <button class="btn ghost" id="clear" hidden>Borrar todas las compras</button>
-</section>
-
-<section id="p2" role="tabpanel" aria-labelledby="t2" hidden>
-  <div class="panel">
-    <div class="row">
-      <div class="full"><label for="n2">¿Qué te falta?</label><input id="n2" list="sug" placeholder="Ej. Huevo, papel higiénico" autocomplete="off"></div>
-      <div class="full"><label for="e2">Precio estimado (opcional)</label><input id="e2" type="number" inputmode="decimal" min="0" step="0.01" placeholder="0.00"></div>
-      <div class="full"><button class="btn" id="add2" style="width:100%">Agregar a la lista</button></div>
-    </div>
-  </div>
-  <div class="panel">
-    <h2>Lista para el súper</h2>
-    <ul id="list2"></ul>
-    <p class="hint" id="est" hidden></p>
-    <a class="btn wa" id="wa2" target="_blank" rel="noopener" style="margin-top:12px" hidden>Enviar lista por WhatsApp</a>
-  </div>
-</section>
-</main>
 
 <script>
 var KEY='la-despensa-v1',S={items:[],missing:[]},COL={Alimentos:'#2E8B57',Bebidas:'#2F7FB8',Limpieza:'#8E6BBF',Higiene:'#D4709A',Mascotas:'#C8812E',Otros:'#7A8A82'},buying=null;
