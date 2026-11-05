@@ -85,13 +85,14 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
 </svg>
 <h1>LC Mi Despensa</h1>
 </div>
+  
 <!-- Botón Apoyo con Mercado Pago en la cabecera -->
 <div class="lc-support">
   <button id="lcDonateBtn" class="lc-support-trigger"
           aria-expanded="false">
     <span class="lc-heart">♡</span>
     <span class="lc-support-text">
-      <strong>Te Gustaria Apoyar LC Mi Despensa</strong>
+      <strong>Te Gustaria Apoyar LC Radio Universal</strong>
       <small>Donaciones voluntarias</small>
     </span>
     <span id="lcArrow">⌄</span>
@@ -107,13 +108,13 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
     </div>
 
     <p><strong>Beneficiario:</strong><br>
-      LC Mi Despensa</p>
+      LC Radio Universal</p>
 
     <p><strong>CLABE interbancaria:</strong></p>
 
     <div class="lc-clabe">
-      <span id="lcClabe">L...C...(722969010061473580)</span>
-      <button id="lcCopyBtn">Copiar</button>
+      <span id="lcClabe">CLABE oculta </span>
+      <button id="lcCopyBtn">Copiar CLABE</button>
     </div>
 
     <p class="lc-thanks">
@@ -267,17 +268,23 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
   copy.addEventListener("click", async () => {
     try {
       await navigator.clipboard.writeText(clabe);
-      copy.textContent = "¡Copiada!";
     } catch {
-      copy.textContent = "Copia manualmente";
+      // Respaldo para iPhone/Safari si el portapapeles moderno falla
+      const t = document.createElement("textarea");
+      t.value = clabe;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch {}
+      document.body.removeChild(t);
     }
+    copy.textContent = "¡Copiada!";
+    setTimeout(() => (copy.textContent = "Copiar CLABE"), 2000);
   });
 })();
 </script>
-<!-- Botón Apoyo mercado Final -->
-
-  
-<p class="sub">Anota lo que compras, ve cuánto gastas y no olvides lo que falta.</p>
+<!-- Botón Apoyo mercado Final --><p class="sub">Anota lo que compras, ve cuánto gastas y no olvides lo que falta.</p>
 
 <div class="sum" aria-live="polite">
   <div class="big"><small>Gasto total</small><b id="total">$0.00</b></div>
