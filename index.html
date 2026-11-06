@@ -454,38 +454,30 @@ render();
 </script>
   
 (function () {
-  const APP = "despensa";
-  const WORKER = "https://presencia.paragugliar.workers.dev/ping";
-
-  let id;
+  var APP = "despensa";
+  var ENDPOINT = "https://contador.paragugliar.workers.dev/ping";
   try {
-    id = localStorage.getItem("uid_contador");
+    var id = localStorage.getItem("uid");
     if (!id) {
-      id = crypto.randomUUID();
-      localStorage.setItem("uid_contador", id);
+      id = crypto.randomUUID ? crypto.randomUUID() : Date.now() + "-" + Math.random().toString(36).slice(2);
+      localStorage.setItem("uid", id);
     }
-  } catch (e) {
-    id = crypto.randomUUID();
-  }
-
-  const ping = () =>
-    fetch(WORKER, {
+    var hoy = new Date().toDateString();
+    if (localStorage.getItem("ping_" + APP) === hoy) return; // ya se reportó hoy
+    fetch(ENDPOINT, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ app: APP, id }),
-    }).catch(() => {});
-
-  ping();
-  setInterval(ping, 180000); // cada 3 minutos
+      headers: { "Content-Type": "text/plain" },
+      body: JSON.stringify({ app: APP, id: id }),
+      keepalive: true,
+    }).then(function () { localStorage.setItem("ping_" + APP, hoy); }).catch(function () {});
+  } catch (e) {}
 })();
+  
   <script
   src="https://luischarlii.github.io/LC-Ads/lc-ads.js"
   data-app="all">
 </script>
-  <script
-  src="https://luischarlii.github.io/LC-Ads/lc-ads.js?v=2"
-  data-app="lc-passwords">
-</script>
+
 </body>
    <center><footer>LC Despensa · Luis Charlii</footer></center> 
 </html>
