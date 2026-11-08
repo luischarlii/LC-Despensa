@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>La Despensa</title>
+<title>La Despensa V1</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap">
 <style>
 :root{--bg:#E9EFE4;--card:#FBFCF8;--ink:#17342B;--mute:#5C7167;--line:#CBD6C5;--green:#1F5A46;--gold:#E0A526;--red:#C8442F;--on-green:#F3F7EE;
@@ -39,19 +39,6 @@ input:focus-visible,select:focus-visible,button:focus-visible{outline:3px solid 
 .btn.sm{padding:6px 10px;min-height:36px;font-size:.88rem}
 .btn:active{transform:translateY(1px)}
 .wa{display:block;text-align:center;text-decoration:none;background:#128C46;color:#fff;margin-bottom:12px}
-details>summary{cursor:pointer;list-style:none;font:800 1.15rem "Bricolage Grotesque",sans-serif;min-height:44px;display:flex;align-items:center;justify-content:space-between}
-details>summary::-webkit-details-marker{display:none}
-details>summary::after{content:"▾";color:var(--mute)}
-details[open]>summary{margin-bottom:8px}
-details[open]>summary::after{content:"▴"}
-.vh{position:absolute;opacity:0;width:1px;height:1px;overflow:hidden}
-textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:11px 12px;min-height:110px;margin:6px 0 8px}
-textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
-li.sc{align-items:flex-start}
-.sc input[type=checkbox]{width:24px;min-height:24px;height:24px;margin-top:10px;flex:none;accent-color:var(--green)}
-.inl2{display:flex;gap:6px;align-items:center;margin-top:6px;flex-wrap:wrap}
-.inl2 input{width:76px;min-height:38px;padding:6px 8px}
-.inl2 select{width:auto;min-height:38px;padding:6px}
 ul{list-style:none;margin:0;padding:0}
 li{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid var(--line)}
 li:first-child{border-top:0}
@@ -97,6 +84,208 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
 <rect x="64" y="58" width="16" height="5" rx="2" fill="#2E8B57"/>
 </svg>
 <h1>La Despensa</h1>
+
+</div>
+
+<!-- Botón Apoyo con Mercado Pago en la cabecera -->
+<div class="lc-support">
+  <button id="lcDonateBtn" class="lc-support-trigger"
+          aria-expanded="false">
+    <span class="lc-heart">♡</span>
+    <span class="lc-support-text">
+      <strong>Te Gustaria Apoyar LC Radio Universal</strong>
+      <small>Donaciones voluntarias</small>
+    </span>
+    <span id="lcArrow">⌄</span>
+  </button>
+
+  <div id="lcDonationDetails" class="lc-support-details" hidden>
+    <div class="lc-bank">
+      <img
+        src="https://cdn.jsdelivr.net/gh/glincker/thesvg@main/public/icons/mercado-pago/default.svg"
+        alt="Mercado Pago"
+      >
+      <strong>Mercado Pago W</strong>
+    </div>
+
+    <p><strong>Beneficiario:</strong><br>
+      LC Radio Universal</p>
+
+    <p><strong>CLABE interbancaria:</strong></p>
+
+    <div class="lc-clabe">
+      <span id="lcClabe">CLABE oculta </span>
+      <button id="lcCopyBtn">Copiar CLABE</button>
+    </div>
+
+    <p class="lc-thanks">
+      ¡Gracias por apoyar este proyecto!
+    </p>
+    <small>Tu aportación es completamente voluntaria.</small>
+  </div>
+
+<style>
+
+.lc-radio-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin: 15px 0;
+}
+
+.lc-radio-header img {
+  width: 55px;
+  height: 55px;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.lc-radio-header h1 {
+  margin: 0;
+  font-size: 25px;
+}
+
+.lc-support {
+  max-width: 390px;
+  margin: 15px auto;
+  background: #101827;
+  border: 1px solid #34445b;
+  border-radius: 12px;
+  color: white;
+  font-family: Arial, sans-serif;
+  overflow: hidden;
+}
+
+.lc-support-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 14px;
+  background: transparent;
+  border: 0;
+  color: white;
+  text-align: left;
+  cursor: pointer;
+}
+
+.lc-heart {
+  color: #d4af37;
+  font-size: 25px;
+}
+
+.lc-support-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.lc-support-text strong {
+  font-size: 13px;
+}
+
+.lc-support-text small {
+  font-size: 11px;
+  color: #aebbd0;
+}
+
+#lcArrow {
+  color: #d4af37;
+  font-size: 20px;
+}
+
+.lc-support-details {
+  border-top: 1px solid #34445b;
+  padding: 15px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.lc-bank {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-size: 17px;
+}
+
+.lc-bank img {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  background: white;
+  border-radius: 50%;
+  padding: 4px;
+}
+
+.lc-clabe {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  background: #1f2937;
+  border-radius: 8px;
+  overflow-wrap: anywhere;
+}
+
+#lcCopyBtn {
+  background: #d4af37;
+  color: #101827;
+  border: none;
+  border-radius: 7px;
+  padding: 9px 13px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.lc-thanks {
+  color: #f5c542;
+  font-weight: bold;
+  margin-top: 17px;
+}
+</style>
+
+<script>
+(() => {
+  const clabe = "722969010061473580";
+  const trigger = document.getElementById("lcDonateBtn");
+  const details = document.getElementById("lcDonationDetails");
+  const arrow = document.getElementById("lcArrow");
+  const copy = document.getElementById("lcCopyBtn");
+
+  trigger.addEventListener("click", () => {
+    const opening = details.hidden;
+    details.hidden = !opening;
+    trigger.setAttribute("aria-expanded", String(opening));
+    arrow.textContent = opening ? "⌃" : "⌄";
+  });
+
+  copy.addEventListener("click", async () => {
+    try {
+      await navigator.clipboard.writeText(clabe);
+    } catch {
+      // Respaldo para iPhone/Safari si el portapapeles moderno falla
+      const t = document.createElement("textarea");
+      t.value = clabe;
+      t.style.position = "fixed";
+      t.style.opacity = "0";
+      document.body.appendChild(t);
+      t.select();
+      try { document.execCommand("copy"); } catch {}
+      document.body.removeChild(t);
+    }
+    copy.textContent = "¡Copiada!";
+    setTimeout(() => (copy.textContent = "Copiar CLABE"), 2000);
+  });
+})();
+</script>
+<!-- Botón Apoyo mercado Final -->
+
 </div>
 <p class="sub">Anota lo que compras, ve cuánto gastas y no olvides lo que falta.</p>
 
@@ -112,20 +301,6 @@ h2{font:800 1.15rem "Bricolage Grotesque",sans-serif;margin:0 0 10px}
 </div>
 
 <section id="p1" role="tabpanel" aria-labelledby="t1">
-  <details class="panel" id="scanBox">
-    <summary>📷 Escanear recibo</summary>
-    <p class="hint" style="margin:0 0 10px">Pega el texto de tu recibo (o toma una foto) y los artículos y costos se agregan solos a tus compras.</p>
-    <label class="btn" for="rc" style="display:block;text-align:center;color:var(--on-green)">📷 Tomar o elegir foto</label>
-    <input id="rc" class="vh" type="file" accept="image/*">
-    <label for="pasteTx" style="margin-top:12px">Texto del recibo, sin conexión a Claude</label>
-    <textarea id="pasteTx" placeholder="Leche entera 1 L   28.50&#10;Huevo 12 pzas   45.00&#10;2 x Jabón   36.00"></textarea>
-    <button class="btn ghost" id="pasteOk" style="width:100%">Leer texto</button>
-    <p class="hint">En el iPhone: abre la foto del recibo en Fotos, toca el icono de texto de la esquina inferior derecha, elige «Seleccionar todo», copia y pega aquí.</p>
-    <p class="hint" id="scanMsg" role="status" hidden></p>
-    <ul id="scanList"></ul>
-    <div class="row" id="scanAct" hidden><button class="btn" id="scanOk">Agregar</button><button class="btn ghost" id="scanNo">Descartar</button></div>
-    <button class="btn ghost" id="scanUndo" style="width:100%;margin-top:8px" hidden>Deshacer esta carga</button>
-  </details>
   <div class="panel">
     <div class="row">
       <div class="full"><label for="n1">Artículo</label><input id="n1" list="sug" placeholder="Ej. Leche, jabón, arroz" autocomplete="off"></div>
@@ -276,189 +451,12 @@ try{
   var im=new Image();im.onload=function(){try{var c=document.createElement('canvas');c.width=c.height=180;c.getContext('2d').drawImage(im,0,0,180,180);
     var ap=document.createElement('link');ap.rel='apple-touch-icon';ap.href=c.toDataURL('image/png');document.head.appendChild(ap)}catch(e){}};im.src=svgUrl;
 }catch(e){}
-var SC=[],CATS=['Alimentos','Bebidas','Limpieza','Higiene','Mascotas','Otros'];
-var PROMPT='Eres un lector de recibos de supermercado. Lee la imagen adjunta (un ticket de compra) y extrae SOLO los artículos comprados. Reglas: ignora subtotal, IVA, total, cambio, descuentos, puntos, datos de tarjeta, fecha y tienda. Expande las abreviaturas a nombres claros en español (ej. LCHE ENT 1L = Leche entera 1 L). Si una línea tiene cantidad mayor a 1, "precio" es el precio por unidad (si solo aparece el importe de la línea, divídelo entre la cantidad). Usa punto decimal y números sin símbolo de moneda. La categoría debe ser solo una de: Alimentos, Bebidas, Limpieza, Higiene, Mascotas, Otros. Responde únicamente con JSON, sin texto extra ni bloques de código, con esta forma: {"articulos":[{"nombre":"...","cantidad":1,"precio":0.0,"categoria":"Alimentos"}]}. Si la imagen no es un recibo legible responde {"articulos":[]}.';
-function sm(t,err){var m=$('scanMsg');m.textContent=t||'';m.hidden=!t;m.style.color=err?'var(--red)':'var(--mute)'}
-function shrink(f){return new Promise(function(res,rej){var im=new Image(),u=URL.createObjectURL(f);im.onload=function(){var k=Math.min(1,1800/Math.max(im.width,im.height)),c=document.createElement('canvas');c.width=Math.round(im.width*k);c.height=Math.round(im.height*k);c.getContext('2d').drawImage(im,0,0,c.width,c.height);URL.revokeObjectURL(u);c.toBlob(function(b){b?res(b):rej(new Error('blob'))},'image/jpeg',.88)};im.onerror=function(){rej(new Error('img'))};im.src=u})}
-function drawScan(){
-  $('scanList').innerHTML=SC.map(function(x){
-    return '<li class="sc"><input type="checkbox" class="si" checked aria-label="Incluir"><div class="grow"><input class="sn" aria-label="Artículo" value="'+esc(x.n)+'"><div class="inl2"><input class="sq" type="number" inputmode="numeric" min="1" aria-label="Cantidad" value="'+x.q+'"><span>× $</span><input class="sp" type="number" inputmode="decimal" min="0" step="0.01" aria-label="Precio unitario" value="'+x.p+'"><select class="sk" aria-label="Categoría">'+CATS.map(function(c){return '<option'+(c===x.c?' selected':'')+'>'+c+'</option>'}).join('')+'</select></div></div></li>';
-  }).join('');
-  $('scanAct').hidden=!SC.length;
-  $('scanOk').textContent='Agregar '+SC.length+' artículos';
-}
-$('scanOk').onclick=function(){
-  var n=0;
-  [].forEach.call($('scanList').children,function(li){
-    if(!li.querySelector('.si').checked)return;
-    var nm=li.querySelector('.sn').value.trim(),q=parseInt(li.querySelector('.sq').value,10)||1,p=parseFloat(li.querySelector('.sp').value);
-    if(!nm||isNaN(p))return;
-    addItem(nm,p,q,li.querySelector('.sk').value);
-    S.missing=S.missing.filter(function(m){return m.name.toLowerCase()!==nm.toLowerCase()});n++;
-  });
-  SC=[];$('scanList').innerHTML='';$('scanAct').hidden=true;sm(n+' artículos agregados a tus compras.');save();render();
-};
-$('scanNo').onclick=function(){SC=[];$('scanList').innerHTML='';$('scanAct').hidden=true;sm('')};
-async function initScan(){
-  var s=null;
-  try{s=await claude.use('sample')}catch(e){}
-  if(!s)return;
-  try{var l=await s.limits();if(!l||!l.images)return}catch(e){return}
-  lb.hidden=false;
-  $('rc').onchange=async function(){
-    var f=this.files&&this.files[0];this.value='';
-    if(!f)return;
-    $('scanUndo').hidden=true;sm('Leyendo el recibo… puede tardar unos segundos.');
-    try{
-      var b=await shrink(f),d=await s.json(PROMPT,{images:[b],cache:false});
-      var a=(d&&d.articulos)||[];
-      SC=a.map(function(x){return{n:String(x.nombre||'').trim(),q:parseInt(x.cantidad,10)||1,p:parseFloat(x.precio),c:CATS.indexOf(x.categoria)>-1?x.categoria:'Otros'}}).filter(function(x){return x.n&&!isNaN(x.p)});
-      if(!SC.length){sm('No encontré artículos. Prueba con una foto más cercana y con buena luz.',1);return}
-      addScanned(SC);SC=[];
-    }catch(e){
-      var c=e&&e.code;
-      sm(c==='not_granted'?'Para escanear necesitas permitir el uso de Claude.':c==='rate_limited'?'Demasiados intentos seguidos. Espera un momento.':'No pude leer el recibo. Intenta de nuevo con otra foto.',1);
-    }
-  };
-}
-var SKIP=/\b(sub\s*total|total|i\.?v\.?a|cambio|efectivo|tarjeta|visa|mastercard|pago|descuento|ahorro|puntos|folio|ticket|fecha|rfc|cajero|gracias|sucursal|factura|tel[eé]fono)\b/i;
-var KW=[[/jab[oó]n|detergente|cloro|suavizante|limpiador|escoba|trapeador|fabuloso|pinol|servilleta|bolsa/i,'Limpieza'],[/shampoo|champ[uú]|pasta dental|desodorante|papel hig|rastrillo|cepillo|toalla/i,'Higiene'],[/\bagua\b|refresco|jugo|cerveza|vino|\bcola\b|caf[eé]|\bt[eé]\b/i,'Bebidas'],[/perro|gato|croqueta|\barena\b/i,'Mascotas']];
-var HDR=/^(cant\.?|cantidad|cnt\.?|descripci[oó]n|desc\.?|art[ií]culos?|producto|precio|p\.?\s?unit\.?|precio unit\.?|unitario|importe|monto|c[oó]digo|unidad)$/i;
-function typ(l){
-  if(/^\d{6,}$/.test(l))return 'z';
-  if(/^\$?\s*\d+(,\d{3})*[.,]\d{2}$/.test(l))return 'm';
-  if(/^\d{1,3}([.,]\d{1,3})?$/.test(l))return 'q';
-  if(HDR.test(l))return 'h';
-  if(SKIP.test(l)||!/[A-Za-z\u00c1-\u00fa]{2}/.test(l))return 'x';
-  return 't';
-}
-function qv(s){return parseFloat(s.replace(',','.'))}
-function mv(s){return parseFloat(s.replace(/[$\s]/g,'').replace(/,(?=\d{3}\b)/g,'').replace(',','.'))}
-function unitOf(q,a,b){if(Math.abs(q*a-b)<.03)return[a,1];if(Math.abs(q*b-a)<.03)return[b,1];return[Math.min(a,b),0]}
-function mkItem(nm,q,p){nm=nm.replace(/_/g,' ').replace(/\s*\/\s*kg\b/i,'').replace(/^\d{6,}\s*/,'').replace(/[\s$]+$/,'');var c='Alimentos';KW.forEach(function(k){if(k[0].test(nm))c=k[1]});return{n:nm.charAt(0).toUpperCase()+nm.slice(1).toLowerCase(),q:q,p:Math.round(p*100)/100,c:c}}
-function fin(a){var s=0,o=[];a.forEach(function(x){var q=x.q||1,p;if(x.m.length>1){var r=unitOf(q,x.m[0],x.m[1]);p=r[0];s+=r[1]?1:.2;if(q%1){p=r[1]?(r[0]===x.m[0]?x.m[1]:x.m[0]):Math.max(x.m[0],x.m[1]);q=1}}else{p=x.m[0]/q;if(q%1){p=x.m[0];q=1}s+=.5}o.push(mkItem(x.n,q,p))});return{i:o,s:s}}
-function rowMode(tk){
-  var it=[],cur=null,pq=null;
-  tk.forEach(function(k){
-    if(k.t==='t'){var d=k.s.match(/^(?:(\d{1,3}(?:[.,]\d{1,3})?)\s+)?\d{5,8}\s+(.+)$/);cur={n:d?d[2]:k.s,q:d?(d[1]?qv(d[1]):1):pq,m:[],cd:!!d};pq=null;it.push(cur)}
-    else if(k.t==='q'){var v=qv(k.s);if(cur&&!cur.m.length&&cur.q==null)cur.q=v;else pq=v}
-    else if(k.t==='m'){if(cur&&cur.m.length<2)cur.m.push(mv(k.s));else pq=qv(k.s)}
-    else{cur=null;pq=null}
-  });
-  var ok=it.filter(function(x){return x.m.length}),cd=ok.filter(function(x){return x.cd});return fin(cd.length>=3?cd:ok);
-}
-function isQ(k){return k.t==='q'||k.t==='m'}
-function colMode(tk){
-  var best={i:[],s:0},i=0;
-  while(i<tk.length){
-    if(tk[i].t!=='t'){i++;continue}
-    var j=i;while(j<tk.length&&tk[j].t==='t')j++;
-    var n=j-i;
-    if(n>=2){
-      var pre=i,opts=[];if(tk[pre-1]&&tk[pre-1].t==='h')pre--;
-      if(pre-n>=0){var qb=tk.slice(pre-n,pre);if(qb.every(isQ))opts.push([qb,i])}
-      var post=j;if(tk[post]&&tk[post].t==='h')post++;
-      var qa=tk.slice(post,post+n);if(qa.length===n&&qa.every(isQ))opts.push([qa,post+n]);
-      opts.push([[],j]);
-      opts.forEach(function(o){
-        var qs=o[0],ms=tk.slice(o[1]).filter(function(k){return k.t==='m'}).map(function(k){return mv(k.s)}),a=[];
-        for(var x=0;x<n;x++){
-          var m2=ms.length>=2*n?[ms[x],ms[n+x]]:(ms.length>=n?[ms[x]]:[]);
-          if(m2.length)a.push({n:tk[i+x].s,q:qs.length?qv(qs[x].s):1,m:m2});
-        }
-        var r=fin(a);if(r.s>best.s||(r.s===best.s&&r.i.length>best.i.length))best=r;
-      });
-    }
-    i=j;
-  }
-  return best;
-}
-function pre(l){var m=l.match(/^(?:(\d{1,3})\s+)?(.+?)\s+\$?(\d+[.,]\d{2})\s+\$?(\d+[.,]\d{2})$/);if(!m)return l;var tot=Math.max(mv(m[3]),mv(m[4]));return(m[1]||'1')+' x '+m[2]+' '+tot.toFixed(2)}
-function parseTxt(t){
-  var L=t.split(/\r?\n/).map(function(l){return l.replace(/\s+/g,' ').trim()}).filter(Boolean);
-  var tk=L.map(function(l){return{t:typ(l),s:l}}).filter(function(k){return k.t!=='z'});
-  var ln=parseLines(L.map(pre).join('\n'));
-  var c=[{i:ln,s:ln.length*.5},rowMode(tk),colMode(tk)];
-  c.sort(function(a,b){return b.s-a.s||b.i.length-a.i.length});
-  return c[0].i;
-}
-function parseLines(t){
-  var out=[];
-  t.split(/\r?\n/).forEach(function(line){
-    line=line.replace(/\s+/g,' ').trim();
-    if(!line||SKIP.test(line))return;
-    var m=line.match(/^(.*?)\s*\$?\s*(\d{1,6}[.,]\d{2})\s*[A-Za-z]?$/);
-    if(!m)return;
-    var nm=m[1].replace(/^\d{6,}\s*/,'').replace(/[\s$]+$/,''),p=parseFloat(m[2].replace(',','.')),q=1;
-    var mq=nm.match(/^(\d{1,3})\s*[xX*]\s*(.*)$/);
-    if(mq){q=parseInt(mq[1],10)||1;nm=mq[2]}
-    if(!/[A-Za-zÁÉÍÓÚáéíóúÑñ]{2}/.test(nm))return;
-    var c='Alimentos';KW.forEach(function(k){if(k[0].test(nm))c=k[1]});
-    out.push({n:nm.charAt(0).toUpperCase()+nm.slice(1).toLowerCase(),q:q,p:Math.round(p/q*100)/100,c:c});
-  });
-  return out;
-}
-var LAST=[];
-function addScanned(a){
-  LAST=[];var sum=0;
-  a.slice().reverse().forEach(function(x){
-    addItem(x.n,x.p,x.q,x.c);LAST.push(S.items[0].id);sum+=x.q*x.p;
-    var nm=x.n.toLowerCase();S.missing=S.missing.filter(function(m){return m.name.toLowerCase()!==nm});
-  });
-  save();render();
-  sm('Se agregaron '+a.length+' artículos a tus compras por '+money(sum)+'. Compáralo con el subtotal de tu recibo.');
-  $('scanUndo').hidden=false;
-}
-$('scanUndo').onclick=function(){
-  S.items=S.items.filter(function(i){return LAST.indexOf(i.id)<0});
-  LAST=[];$('scanUndo').hidden=true;save();render();sm('Carga deshecha.');
-};
-$('pasteOk').onclick=function(){
-  $('scanUndo').hidden=true;
-  var a=parseTxt($('pasteTx').value);
-  if(!a.length){sm('No encontré artículos con precio. Revisa que el texto copiado incluya la descripción y los precios.',1);return}
-  addScanned(a);$('pasteTx').value='';
-};
-var lb=document.querySelector('label[for=rc]');lb.hidden=true;
-initScan();
 render();
 </script>
+
 <script
   src="https://luischarlii.github.io/LC-Ads/lc-ads.js?v=2"
   data-app="all">
-</script>
-<!--
-  Verificación de integridad de La Despensa.
-  Esta app es de uso libre, pero el script de publicidad de abajo
-  (LC-Ads, de luischarlii.github.io) es lo que sostiene el proyecto.
-  Si falta o fue cambiado, la app se bloquea con un aviso visible,
-  en vez de fallar en silencio. Nada de esto es un código oculto:
-  está documentado aquí mismo, dentro del HTML.
--->
-<div id="lockScreen" style="position:fixed;inset:0;z-index:9999;background:#0F1C17;color:#F3F7EE;display:none;align-items:center;justify-content:center;text-align:center;padding:24px;font:500 16px/1.5 'DM Sans',system-ui,sans-serif">
-  <div style="max-width:420px">
-    <div style="font-size:2.5rem;margin-bottom:10px">🔒</div>
-    <h2 style="font:800 1.4rem 'Bricolage Grotesque',sans-serif;margin:0 0 10px">Esta copia fue modificada</h2>
-    <p style="margin:0 0 6px">La Despensa no encontró intacto el script de publicidad original (LC-Ads) que sostiene este proyecto.</p>
-    <p style="margin:0;color:#92A89B;font-size:.9rem">Para usar la app, restaura el script tal como venía o descárgala desde la fuente original.</p>
-  </div>
-</div>
-<script>
-(function(){
-  var EXPECTED_SRC = "https://luischarlii.github.io/LC-Ads/lc-ads.js?v=2";
-  var EXPECTED_APP = "all";
-  function lock(){
-    var s=document.getElementById('lockScreen');
-    if(s){ s.style.display='flex'; }
-    document.documentElement.style.overflow='hidden';
-    var m=document.querySelector('main');
-    if(m) m.setAttribute('inert','');
-  }
-  var tag=document.querySelector('script[src^="https://luischarlii.github.io/LC-Ads/"]');
-  if(!tag || tag.getAttribute('src')!==EXPECTED_SRC || tag.getAttribute('data-app')!==EXPECTED_APP){
-    lock();
-  }
-})();
 </script>
 
 </body>
